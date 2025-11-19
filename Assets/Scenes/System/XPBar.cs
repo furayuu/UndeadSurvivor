@@ -16,7 +16,8 @@ public class XPBar : MonoBehaviour
         if (currentXP >= maxXP)
         {
             currentXP = 0; // レベルアップ後に経験値をリセット（必要に応じて変更）
-            // Debug.Log("レベルアップ！");
+            maxXP += 10;
+             Debug.Log("レベルアップ！");
         }
 
         UpdateBar(); // バーの表示を更新
@@ -35,6 +36,6 @@ public class XPBar : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             AddXP(10); // 10ポイント追加
-        }
+        }   
     }
 }
