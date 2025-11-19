@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerSprite : MonoBehaviour
 {
+    // スプライトの向きを更新
     public void UpdateFacing(SpriteRenderer spriteRenderer, Vector2 inputDir)
     {
         if (inputDir.x > 0)
@@ -10,16 +11,16 @@ public class PlayerSprite : MonoBehaviour
             spriteRenderer.flipX = true;
     }
 
-
+    // アニメーションを更新
     public void UpdateAnimation(Animator animator, Vector2 inputDir, bool isDead)
     {
         if (animator == null) return;
 
         float speed = inputDir.magnitude;
 
-        animator.SetFloat("Speed", speed);    
+        animator.SetFloat("Speed", speed);
         animator.SetFloat("MoveX", inputDir.x);
         animator.SetFloat("MoveY", inputDir.y);
-        animator.SetBool("IsDead", isDead);   
+        animator.SetBool("IsDead", isDead);
     }
 }

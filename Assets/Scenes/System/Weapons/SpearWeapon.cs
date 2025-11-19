@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class SpearWeapon : MeleeWeaponBase
 {
-    private Vector3 startLocalPos;
     private Vector3 targetPos;
     private Transform currentTarget;
     private HashSet<EnemyBase> hitEnemies = new HashSet<EnemyBase>();
@@ -11,12 +10,7 @@ public class SpearWeapon : MeleeWeaponBase
     protected override void Start()
     {
         base.Start();
-
-        if (pivot == null)
-            pivot = owner != null ? owner : transform.parent;
-
-        transform.parent = pivot;
-        startLocalPos = transform.localPosition;
+        // 基本クラスで初期化と向き更新を処理
     }
 
     protected override void TryAttack()
@@ -28,6 +22,7 @@ public class SpearWeapon : MeleeWeaponBase
         {
             StartAttack();
         }
+        
     }
 
     private Transform FindNearestEnemy()
@@ -65,8 +60,12 @@ public class SpearWeapon : MeleeWeaponBase
         StartCoroutine(ExtendRoutine());
     }
 
+
     private System.Collections.IEnumerator ExtendRoutine()
     {
+        Vector3 attackStartPos = transform.localPosition;
+
+        // 前方に伸ばす
         while (Vector3.Distance(transform.localPosition, targetPos) > 0.05f)
         {
             transform.localPosition = Vector3.MoveTowards(
@@ -76,14 +75,16 @@ public class SpearWeapon : MeleeWeaponBase
             yield return null;
         }
 
-        while (Vector3.Distance(transform.localPosition, startLocalPos) > 0.05f)
+        // 元の位置に戻る
+        while (Vector3.Distance(transform.localPosition, attackStartPos) > 0.05f)
         {
             transform.localPosition = Vector3.MoveTowards(
-                transform.localPosition, startLocalPos, weaponData.extendSpeed * Time.deltaTime);
+                transform.localPosition, attackStartPos, weaponData.extendSpeed * Time.deltaTime);
             yield return null;
         }
 
-        transform.localRotation = Quaternion.identity;
+        // 戻った後に正しい向きを復元
+        UpdateWeaponFacing();
         isAttacking = false;
     }
 
@@ -99,6 +100,47 @@ public class SpearWeapon : MeleeWeaponBase
             {
                 enemy.TakeDamage(weaponData.damage);
                 hitEnemies.Add(enemy);
+            }
+        }
+    }
+
+    // 武器の向き更新メソッドをオーバーライドして槍用の特別な処理を追加
+    protected override void UpdateWeaponFacing()
+    {
+        if (pivot == null || isAttacking) return;
+
+        // プレイヤーのスプライトの向きを取得
+        SpriteRenderer playerSprite = Player.Instance.SpriteRenderer;
+        if (playerSprite != null)
+        {
+            bool newFacingRight = !playerSprite.flipX;
+
+            // 向きが変更された場合
+            if (newFacingRight != facingRight)
+            {
+                facingRight = newFacingRight;
+
+                // 槍の場合は位置と回転の両方を調整
+                if (facingRight)
+                {
+                    // 右向き - 通常の位置と0度回転
+                    transform.localPosition = new Vector3(
+                        Mathf.Abs(startLocalPos.x),
+                        startLocalPos.y,
+                        startLocalPos.z
+                    );
+                    transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+                }
+                else
+                {
+                    // 左向き - 水平反転と180度回転
+                    transform.localPosition = new Vector3(
+                        -Mathf.Abs(startLocalPos.x),
+                        startLocalPos.y,
+                        startLocalPos.z
+                    );
+                    transform.localRotation = Quaternion.Euler(0f, 0f, 180f);
+                }
             }
         }
     }

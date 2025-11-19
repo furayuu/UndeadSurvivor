@@ -1,42 +1,58 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class HPBar : MonoBehaviour
 {
+    public Image fillImage;     // HPバーの塗り部分
+    public int maxHP = 100;     // 最大HP
+    public int currentHP;       // 現在のHP
 
-    int maxHp = 100;
-    int currentHp;
-    public Slider slider;
-   
-    // Start is called before the first frame update
     void Start()
     {
-
-        slider.value = 1;
-
-        currentHp = maxHp;  
-        //Debug.Log("Start currentHp : " + currentHp);
+        currentHP = maxHP;     // 初期HPを最大値に設定
+        UpdateBar();
     }
 
-
-     public void OnTriggerEnter2D(Collider2D colider2d)
+    // ダメージを受ける関数（敵の攻撃や衝突ダメージ用）
+    public void TakeDamage(int amount)
     {
+        currentHP -= amount;
 
-        if (colider2d.gameObject.tag == "Enemy")
+        if (currentHP < 0)
+            currentHP = 0;     // HPが0未満にならないようにする
+
+        UpdateBar();
+    }
+
+    // 回復する関数（回復アイテム、吸血効果など）
+    public void Heal(int amount)
+    {
+        currentHP += amount;
+
+        if (currentHP > maxHP)
+            currentHP = maxHP; // 最大HPを超えないようにする
+
+        UpdateBar();
+    }
+
+    // HPバーの表示を更新
+    void UpdateBar()
+    {
+        fillImage.fillAmount = (float)currentHP / maxHP;
+    }
+
+    void Update()
+    {
+        // 左キー：5ダメージ
+        if (Input.GetKeyDown(KeyCode.Q))
         {
+            TakeDamage(5);
+        }
 
-            int damage = Random.Range(1, 20);
-            //Debug.Log("damage : " + damage);
-
-
-            currentHp = currentHp - damage;
-            //Debug.Log("After currentHp : " + currentHp);
-
-            slider.value = (float)currentHp / (float)maxHp; 
-            Debug.Log("slider.value : " + slider.value);
+        // 右キー：5回復
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Heal(5);
         }
     }
 }
-
-
