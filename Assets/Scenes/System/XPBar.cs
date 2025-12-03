@@ -21,9 +21,10 @@ public class XPBar : MonoBehaviour
             Debug.Log("レベルアップ！");
             Debug.Log(maxXP);
             hpbar.maxHP += 10;             //最大HPを１０増やす
+            Debug.Log(hpbar.maxHP);
             if(hpbar.currentHP < hpbar.maxHP)
             {
-                hpbar.currentHP = hpbar.maxHP; //LvUP時にHPを最大値まで回復する
+                hpbar.MaxHeal(); //LvUP時にHPを最大値まで回復する
                 Debug.Log("HP回復しました！");
             }
      

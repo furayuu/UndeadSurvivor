@@ -35,6 +35,14 @@ public class HPBar : MonoBehaviour
         UpdateBar();
     }
 
+    public void MaxHeal()
+    {
+        currentHP = maxHP;
+
+        UpdateBar();
+    }
+
+
     // HPバーの表示を更新
     void UpdateBar()
     {
