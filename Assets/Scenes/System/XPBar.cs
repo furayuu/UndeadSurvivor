@@ -6,7 +6,6 @@ public class XPBar : MonoBehaviour
     public Image fillImage;    // XPバーの塗り部分（XPBar_Fill をドラッグ）
     public int currentXP = 0;  // 現在の経験値
     public int maxXP = 100;    // 次のレベルまでに必要な経験値
-    public HPBar hpbar;        //HPBarの参照を追加
 
     // 経験値を追加する関数
     public void AddXP(int amount)
@@ -17,24 +16,7 @@ public class XPBar : MonoBehaviour
         if (currentXP >= maxXP)
         {
             currentXP = 0; // レベルアップ後に経験値をリセット（必要に応じて変更）
-            maxXP += 10;   //必要経験値を１０増やす
-            Debug.Log("レベルアップ！");
-            Debug.Log(maxXP);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 9cf6f54 (no message)
-            hpbar.maxHP += 10;//最大HPを１０増やす
-            Debug.Log(hpbar.maxHP);
-=======
-            hpbar.maxHP += 10;             //最大HPを１０増やす
->>>>>>> parent of f9c2803 (使用していないメソッドを削除し、HPBarの中に新たな関数を作成し、XPBar内で使用するよう変更)
-            if(hpbar.currentHP < hpbar.maxHP)
-            {
-                hpbar.currentHP = hpbar.maxHP; //LvUP時にHPを最大値まで回復する
-                Debug.Log("HP回復しました！");
-            }
-     
+            // Debug.Log("レベルアップ！");
         }
 
         UpdateBar(); // バーの表示を更新
@@ -53,6 +35,6 @@ public class XPBar : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             AddXP(10); // 10ポイント追加
-        }   
+        }
     }
 }

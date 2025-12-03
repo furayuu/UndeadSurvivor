@@ -1,87 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
 public class HPBar : MonoBehaviour
 {
-    public Image fillImage;     // HPバーの塗り部分
-    public int maxHP = 100;     // 最大HP
-    public int currentHP;       // 現在のHP
 
+    int maxHp = 100;
+    int currentHp;
+    public Slider slider;
+   
+    // Start is called before the first frame update
     void Start()
     {
-        currentHP = maxHP;     // 初期HPを最大値に設定
-        UpdateBar();
+
+        slider.value = 1;
+
+        currentHp = maxHp;  
+        //Debug.Log("Start currentHp : " + currentHp);
     }
 
-    // ダメージを受ける関数（敵の攻撃や衝突ダメージ用）
-    public void TakeDamage(int amount)
+
+     public void OnTriggerEnter2D(Collider2D colider2d)
     {
-        currentHP -= amount;
-        Debug.Log(currentHP);
-        if (currentHP < 0)
+
+        if (colider2d.gameObject.tag == "Enemy")
         {
-            // HPが0未満にならないようにする
-            currentHP = 0;
 
-            //プレイヤーを削除するために検索
-            GameObject obj = GameObject.Find("Player");
-
-            //プレイヤーの削除
-            Destroy(obj);
-
-            //ゲームオーバー画面に遷移
-            SceneManager.LoadScene("GameOverScene");
-        }
-            
-
-        UpdateBar();
-    }
-
-    // 回復する関数（回復アイテム、吸血効果など）
-    public void Heal(int amount)
-    {
-        currentHP += amount;
-
-        if (currentHP > maxHP)
-            currentHP = maxHP; // 最大HPを超えないようにする
-
-        UpdateBar();
-    }
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 9cf6f54 (no message)
-    //レベルアップしたときに全回復する関数
-    public void MaxHeal()
-    {
-        currentHP = maxHP;
-
-        UpdateBar();
-    }
+            int damage = Random.Range(1, 20);
+            //Debug.Log("damage : " + damage);
 
 
-=======
->>>>>>> parent of f9c2803 (使用していないメソッドを削除し、HPBarの中に新たな関数を作成し、XPBar内で使用するよう変更)
-    // HPバーの表示を更新
-    void UpdateBar()
-    {
-        fillImage.fillAmount = (float)currentHP / maxHP;
-    }
+            currentHp = currentHp - damage;
+            //Debug.Log("After currentHp : " + currentHp);
 
-    void Update()
-    {
-        // 左キー：5ダメージ
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            TakeDamage(5);
-        }
-
-        // 右キー：5回復
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Heal(5);
+            slider.value = (float)currentHp / (float)maxHp; 
+            Debug.Log("slider.value : " + slider.value);
         }
     }
 }
+
+

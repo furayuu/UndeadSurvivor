@@ -3,19 +3,19 @@ using UnityEngine;
 
 public enum WeaponType
 {
-    Melee,  // 近接武器
-    Ranged  // 遠距離武器
+    Melee,
+    Ranged
 }
 
 public enum AttackMode
 {
-    // 近接武器
-    Stab,   // 突き（草叉）
-    Swing,  // 扇形振り（シャベル）
-    Spin,   // 回転（鎌）
+    // 近战
+    Stab,   // 刺击（草叉）
+    Swing,  // 扇形（铁锹）
+    Spin,   // 旋转（镰刀）
 
-    // 遠距離武器
-    SingleShot, // 単発（スナイパー）
-    Burst,      // 連射（拡張可能）
-    Spread      // 拡散（散弾）
+    // 远程
+    SingleShot, // 单发（狙击）
+    Burst,      // 连发（可扩展）
+    Spread      // 霰弹（散射）
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class ScytheWeapon : MeleeWeaponBase
 {
     [Header("Scythe Settings")]
-    [Tooltip("プレイヤーに対する鎌生成位置のオフセット半径")]
+    [Tooltip("镰刀生成位置相对玩家的偏移半径")]
     public float spawnRadius = 0.5f;
 
     protected override void TryAttack()
@@ -15,11 +15,11 @@ public class ScytheWeapon : MeleeWeaponBase
     {
         if (weaponData.projectilePrefab == null)
         {
-            Debug.LogWarning($"ScytheWeapon: {weaponData.weaponName} に projectilePrefab が設定されていません！");
+            Debug.LogWarning($"ScytheWeapon: {weaponData.weaponName} 缺少 projectilePrefab！");
             return;
         }
 
-        // ランダムな周回位置（すべてプレイヤーの下に重ならないようにする）
+        // 随机一个环绕位置（防止全部重叠在玩家脚下）
         Vector2 offset = Random.insideUnitCircle.normalized * spawnRadius;
         Vector3 spawnPos = pivot.position + new Vector3(offset.x, offset.y, 0f);
 
