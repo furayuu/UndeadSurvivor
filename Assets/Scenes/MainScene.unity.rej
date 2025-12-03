@@ -1,7 +1,4 @@
 diff a/Assets/Scenes/MainScene.unity b/Assets/Scenes/MainScene.unity	(rejected hunks)
-<<<<<<< HEAD
-@@ -12228,6 +12228,41 @@
-=======
 @@ -11594,7 +11594,7 @@
    m_Component:
    - component: {fileID: 539981493}
@@ -45,7 +42,6 @@ diff a/Assets/Scenes/MainScene.unity b/Assets/Scenes/MainScene.unity	(rejected h
  MonoBehaviour:
    m_ObjectHideFlags: 0
 @@ -12227,6 +12228,41 @@
->>>>>>> 9cf6f54 (no message)
    m_Script: {fileID: 11500000, guid: b4a48af5ad679434286d085927c2002e, type: 3}
    m_Name: 
    m_EditorClassIdentifier: 
@@ -87,8 +83,6 @@ diff a/Assets/Scenes/MainScene.unity b/Assets/Scenes/MainScene.unity	(rejected h
  --- !u!1 &1477337130
  GameObject:
    m_ObjectHideFlags: 0
-<<<<<<< HEAD
-=======
 @@ -12240,7 +12276,7 @@
    - component: {fileID: 1477337134}
    - component: {fileID: 1477337133}
@@ -107,4 +101,3 @@ diff a/Assets/Scenes/MainScene.unity b/Assets/Scenes/MainScene.unity	(rejected h
    m_Name: Spear
    m_TagString: Untagged
    m_Icon: {fileID: 0}
->>>>>>> 9cf6f54 (no message)
