@@ -21,7 +21,7 @@ public class HPBar : MonoBehaviour
         if (currentHP < 0)
         {
             currentHP = 0;     // HPが0未満にならないようにする
-
+            //ゲームオーバー画面を実装する
         }
             
 
