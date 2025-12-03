@@ -21,6 +21,7 @@ public class XPBar : MonoBehaviour
             Debug.Log("レベルアップ！");
             Debug.Log(maxXP);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> 9cf6f54 (no message)
@@ -29,6 +30,11 @@ public class XPBar : MonoBehaviour
 =======
             hpbar.maxHP += 10;             //最大HPを１０増やす
 >>>>>>> parent of f9c2803 (使用していないメソッドを削除し、HPBarの中に新たな関数を作成し、XPBar内で使用するよう変更)
+=======
+            hpbar.maxHP += 10;//最大HPを１０増やす
+            Debug.Log(hpbar.maxHP);
+            hpbar.maxHP += 10;             //最大HPを１０増やす
+>>>>>>> e2c9c05 (no message)
             if(hpbar.currentHP < hpbar.maxHP)
             {
                 hpbar.currentHP = hpbar.maxHP; //LvUP時にHPを最大値まで回復する

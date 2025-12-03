@@ -1,0 +1,87 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class HPBar : MonoBehaviour
+{
+    public Image fillImage;     // HPバーの塗り部分
+    public int maxHP = 100;     // 最大HP
+    public int currentHP;       // 現在のHP
+
+    void Start()
+    {
+        currentHP = maxHP;     // 初期HPを最大値に設定
+        UpdateBar();
+    }
+
+    // ダメージを受ける関数（敵の攻撃や衝突ダメージ用）
+    public void TakeDamage(int amount)
+    {
+        currentHP -= amount;
+        Debug.Log(currentHP);
+        if (currentHP < 0)
+        {
+            // HPが0未満にならないようにする
+            currentHP = 0;
+
+            //プレイヤーを削除するために検索
+            GameObject obj = GameObject.Find("Player");
+
+            //プレイヤーの削除
+            Destroy(obj);
+
+            //ゲームオーバー画面に遷移
+            SceneManager.LoadScene("GameOverScene");
+        }
+            
+
+        UpdateBar();
+    }
+
+    // 回復する関数（回復アイテム、吸血効果など）
+    public void Heal(int amount)
+    {
+        currentHP += amount;
+
+        if (currentHP > maxHP)
+            currentHP = maxHP; // 最大HPを超えないようにする
+
+        UpdateBar();
+    }
+
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9cf6f54 (no message)
+    //レベルアップしたときに全回復する関数
+    public void MaxHeal()
+    {
+        currentHP = maxHP;
+
+        UpdateBar();
+    }
+
+
+=======
+>>>>>>> parent of f9c2803 (使用していないメソッドを削除し、HPBarの中に新たな関数を作成し、XPBar内で使用するよう変更)
+    // HPバーの表示を更新
+    void UpdateBar()
+    {
+        fillImage.fillAmount = (float)currentHP / maxHP;
+    }
+
+    void Update()
+    {
+        // 左キー：5ダメージ
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            TakeDamage(5);
+        }
+
+        // 右キー：5回復
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Heal(5);
+        }
+    }
+}
