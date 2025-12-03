@@ -20,7 +20,7 @@ public class XPBar : MonoBehaviour
             maxXP += 10;   //必要経験値を１０増やす
             Debug.Log("レベルアップ！");
             Debug.Log(maxXP);
-            hpbar.maxHP += 10;             //最大HPを１０増やす
+            hpbar.maxHP += 10;//最大HPを１０増やす
             Debug.Log(hpbar.maxHP);
             if(hpbar.currentHP < hpbar.maxHP)
             {
