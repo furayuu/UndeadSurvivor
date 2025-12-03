@@ -445,7 +445,10 @@ GameObject:
   - component: {fileID: 770166577}
   - component: {fileID: 770166576}
   - component: {fileID: 770166575}
+<<<<<<< HEAD
   - component: {fileID: 770166578}
+=======
+>>>>>>> 9cf6f54 (no message)
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -503,6 +506,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!114 &770166578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +519,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a28666599a52794a96ce2eac377d200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+>>>>>>> 9cf6f54 (no message)
 --- !u!1 &782293226
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,9 +738,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+<<<<<<< HEAD
       - m_Target: {fileID: 770166578}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: PlayGame
+=======
+      - m_Target: {fileID: 1104443412}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: 
+>>>>>>> 9cf6f54 (no message)
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -743,7 +755,11 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+<<<<<<< HEAD
         m_CallState: 2
+=======
+        m_CallState: 0
+>>>>>>> 9cf6f54 (no message)
 --- !u!114 &1104443415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1188,7 +1204,11 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+<<<<<<< HEAD
       - m_Target: {fileID: 770166578}
+=======
+      - m_Target: {fileID: 0}
+>>>>>>> 9cf6f54 (no message)
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1

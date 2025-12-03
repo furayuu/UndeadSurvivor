@@ -1,5 +1,51 @@
 diff a/Assets/Scenes/MainScene.unity b/Assets/Scenes/MainScene.unity	(rejected hunks)
+<<<<<<< HEAD
 @@ -12228,6 +12228,41 @@
+=======
+@@ -11594,7 +11594,7 @@
+   m_Component:
+   - component: {fileID: 539981493}
+   - component: {fileID: 539981494}
+-  m_Layer: 0
++  m_Layer: 7
+   m_Name: Scythe
+   m_TagString: Untagged
+   m_Icon: {fileID: 0}
+@@ -12061,7 +12061,8 @@
+   - component: {fileID: 1289912028}
+   - component: {fileID: 1289912029}
+   - component: {fileID: 1289912027}
+-  m_Layer: 0
++  - component: {fileID: 1289912030}
++  m_Layer: 6
+   m_Name: Player 0
+   m_TagString: Player
+   m_Icon: {fileID: 0}
+@@ -12169,10 +12170,10 @@
+   m_BodyType: 0
+   m_Simulated: 1
+   m_UseFullKinematicContacts: 0
+-  m_UseAutoMass: 0
+-  m_Mass: 0.0001
++  m_UseAutoMass: 1
++  m_Mass: 0.89650935
+   m_LinearDrag: 0
+-  m_AngularDrag: 0.05
++  m_AngularDrag: 0
+   m_GravityScale: 0
+   m_Material: {fileID: 0}
+   m_IncludeLayers:
+@@ -12214,7 +12215,7 @@
+   playerSprite: {fileID: 1289912027}
+   spriteRenderer: {fileID: 1289912022}
+   animator: {fileID: 1289912024}
+-  hpBar: {fileID: 0}
++  hpBar: {fileID: 114233474}
+ --- !u!114 &1289912029
+ MonoBehaviour:
+   m_ObjectHideFlags: 0
+@@ -12227,6 +12228,41 @@
+>>>>>>> 9cf6f54 (no message)
    m_Script: {fileID: 11500000, guid: b4a48af5ad679434286d085927c2002e, type: 3}
    m_Name: 
    m_EditorClassIdentifier: 
@@ -41,3 +87,24 @@ diff a/Assets/Scenes/MainScene.unity b/Assets/Scenes/MainScene.unity	(rejected h
  --- !u!1 &1477337130
  GameObject:
    m_ObjectHideFlags: 0
+<<<<<<< HEAD
+=======
+@@ -12240,7 +12276,7 @@
+   - component: {fileID: 1477337134}
+   - component: {fileID: 1477337133}
+   - component: {fileID: 1477337136}
+-  m_Layer: 0
++  m_Layer: 7
+   m_Name: Shovel
+   m_TagString: Untagged
+   m_Icon: {fileID: 0}
+@@ -12402,7 +12438,7 @@
+   - component: {fileID: 1658785184}
+   - component: {fileID: 1658785186}
+   - component: {fileID: 1658785187}
+-  m_Layer: 0
++  m_Layer: 7
+   m_Name: Spear
+   m_TagString: Untagged
+   m_Icon: {fileID: 0}
+>>>>>>> 9cf6f54 (no message)

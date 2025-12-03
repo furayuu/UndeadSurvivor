@@ -12228,6 +12228,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9cf6f54 (no message)
 --- !u!70 &1289912030
 CapsuleCollider2D:
 =======
@@ -12296,6 +12300,11 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 >>>>>>> origin/main
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> parent of 116a512 (敵と接触したらHPが減る)
+>>>>>>> 9cf6f54 (no message)
 --- !u!1 &1477337130
 GameObject:
   m_ObjectHideFlags: 0
