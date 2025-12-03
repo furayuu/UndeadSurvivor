@@ -10,7 +10,6 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        moveSpeed = Player.Instance.PlayerSpeed;
     }
 
     private void Update()
@@ -20,6 +19,7 @@ public class PlayerMove : MonoBehaviour
             Input.GetAxisRaw("Horizontal"),
             Input.GetAxisRaw("Vertical")
         ).normalized;
+        moveSpeed = Player.Instance.PlayerSpeed;
     }
 
     private void FixedUpdate()
