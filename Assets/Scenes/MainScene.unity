@@ -12061,6 +12061,7 @@ GameObject:
   - component: {fileID: 1289912028}
   - component: {fileID: 1289912029}
   - component: {fileID: 1289912027}
+  - component: {fileID: 1289912030}
   m_Layer: 0
   m_Name: Player 0
   m_TagString: Player
@@ -12214,7 +12215,7 @@ MonoBehaviour:
   playerSprite: {fileID: 1289912027}
   spriteRenderer: {fileID: 1289912022}
   animator: {fileID: 1289912024}
-  hpBar: {fileID: 0}
+  hpBar: {fileID: 114233474}
 --- !u!114 &1289912029
 MonoBehaviour:
   m_ObjectHideFlags: 0
