@@ -49,6 +49,10 @@ public class HPBar : MonoBehaviour
         UpdateBar();
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9cf6f54 (no message)
     //レベルアップしたときに全回復する関数
     public void MaxHeal()
     {
@@ -58,6 +62,8 @@ public class HPBar : MonoBehaviour
     }
 
 
+=======
+>>>>>>> parent of f9c2803 (使用していないメソッドを削除し、HPBarの中に新たな関数を作成し、XPBar内で使用するよう変更)
     // HPバーの表示を更新
     void UpdateBar()
     {
