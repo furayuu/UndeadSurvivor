@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class HPBar : MonoBehaviour
 {
 
-    int maxHp = 100;
+    public int maxHp = 100;
     int currentHp;
     public Slider slider;
    
