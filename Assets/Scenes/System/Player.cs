@@ -43,15 +43,21 @@ public class Player : MonoBehaviour
         playerSprite.UpdateAnimation(animator, inputDir, isDead);
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        // 敵やトラップに触れたらダメージ
         if (other.CompareTag("Enemy"))
         {
-            hpBar.TakeDamage(10); // 10ダメージ（自由に変更可能）
-        }
+            int damage = 10; // 或者根据敌人攻击数据设定
+            hpBar.TakeDamage(damage); // 更新血条
 
+            // 可选：死亡判定
+            if (hpBar.currentHP <= 0)
+            {
+                Die();
+            }
+        }
     }
+
     // プレイヤー死亡メソッド
     public void Die()
     {
