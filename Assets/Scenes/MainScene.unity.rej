@@ -1,4 +1,3 @@
-diff a/Assets/Scenes/MainScene.unity b/Assets/Scenes/MainScene.unity	(rejected hunks)
 @@ -11594,7 +11594,7 @@
    m_Component:
    - component: {fileID: 539981493}
