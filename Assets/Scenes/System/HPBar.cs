@@ -30,7 +30,7 @@ public class HPBar : MonoBehaviour
             //プレイヤーの削除
             Destroy(obj);
 
-            //ゲームオーバー画面を実装する
+            //ゲームオーバー画面に遷移
             SceneManager.LoadScene("GameOverScene");
         }
             
