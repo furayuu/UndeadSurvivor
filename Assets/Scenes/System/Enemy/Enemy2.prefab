@@ -194,6 +194,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
+  itemA: {fileID: 5579738593462949559, guid: 4ccf77dd606f651469aa912e8e28afb4, type: 3}
+  itemB: {fileID: 1812809498269121064, guid: f962f4df1d24dc44f8af777596fa8c28, type: 3}
+  itemC: {fileID: 8713131265561413947, guid: 2b8bb3e19dcf5b34bbb5484508bd3d71, type: 3}
+  itemAChance: 0.3
+  itemBChance: 0.3
+  itemCChance: 0.3
   moveSpeed: 2
   wanderRadius: 3
   idleTime: 1.5
