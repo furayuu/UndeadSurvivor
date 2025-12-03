@@ -19,7 +19,11 @@ public class HPBar : MonoBehaviour
         currentHP -= amount;
 
         if (currentHP < 0)
+        {
             currentHP = 0;     // HPが0未満にならないようにする
+
+        }
+            
 
         UpdateBar();
     }
@@ -35,6 +39,7 @@ public class HPBar : MonoBehaviour
         UpdateBar();
     }
 
+    //レベルアップしたときに全回復する関数
     public void MaxHeal()
     {
         currentHP = maxHP;
