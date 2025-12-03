@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HPBar : MonoBehaviour
@@ -17,11 +18,20 @@ public class HPBar : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentHP -= amount;
-
+        Debug.Log(currentHP);
         if (currentHP < 0)
         {
-            currentHP = 0;     // HPが0未満にならないようにする
+            // HPが0未満にならないようにする
+            currentHP = 0;
 
+            //プレイヤーを削除するために検索
+            GameObject obj = GameObject.Find("Player");
+
+            //プレイヤーの削除
+            Destroy(obj);
+
+            //ゲームオーバー画面に遷移
+            SceneManager.LoadScene("GameOverScene");
         }
             
 
