@@ -6,7 +6,7 @@ public class HPBar : MonoBehaviour
 {
 
     public int maxHp = 100;
-    int currentHp;
+    public int currentHp;
     public Slider slider;
    
     // Start is called before the first frame update
