@@ -49,12 +49,12 @@ public class XPBar : MonoBehaviour
     // テスト用：スペースキーを押すと経験値を追加
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
 
             AddXP(10); // 10ポイント追加
             Debug.Log("経験値を追加しました");
 
-        }
+        }*/
     }
 }
