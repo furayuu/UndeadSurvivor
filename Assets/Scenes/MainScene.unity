@@ -12615,6 +12615,7 @@ MonoBehaviour:
   fillImage: {fileID: 33242712}
   currentXP: 0
   maxXP: 100
+  hpbar: {fileID: 0}
 --- !u!114 &1849684768
 MonoBehaviour:
   m_ObjectHideFlags: 0

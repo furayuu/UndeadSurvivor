@@ -8,6 +8,12 @@ public class XPBar : MonoBehaviour
     public int maxXP = 100;    // 次のレベルまでに必要な経験値
     public HPBar hpbar;
 
+    private void Start()
+    {
+        //経験値バーの初期化
+        UpdateBar();
+    }
+
     // 経験値を追加する関数
     public void AddXP(int amount)
     {
@@ -25,19 +31,19 @@ public class XPBar : MonoBehaviour
             if (hpbar.currentHP < hpbar.maxHP)
             {
                 hpbar.MaxHeal();
-            }
-
-            UpdateBar(); // バーの表示を更新
+            } 
         }
+        UpdateBar(); // バーの表示を更新
     }
-        // 経験値バーの表示を更新する関数
-     void UpdateBar()
-     {
+    // 経験値バーの表示を更新する関数
+    void UpdateBar()
+    {
+        Debug.Log("更新しました。");
         float fill = (float)currentXP / maxXP; // 割合を計算（0〜1）
         fillImage.fillAmount = fill; // Image の塗り量を変更
-     }
- 
-    
+    }
+
+
     // テスト用：スペースキーを押すと経験値を追加
     void Update()
     {
@@ -46,9 +52,7 @@ public class XPBar : MonoBehaviour
 
             AddXP(10); // 10ポイント追加
             Debug.Log("経験値を追加しました");
-            
+
         }
     }
 }
-
-
