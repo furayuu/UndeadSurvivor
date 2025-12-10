@@ -12122,6 +12122,7 @@ MonoBehaviour:
   playerSprite: {fileID: 1289912027}
   spriteRenderer: {fileID: 1289912022}
   animator: {fileID: 1289912024}
+  xpBar: {fileID: 1849684767}
 --- !u!114 &1289912029
 MonoBehaviour:
   m_ObjectHideFlags: 0

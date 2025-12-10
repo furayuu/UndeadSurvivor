@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
 
-    private bool isDead = false; 
-
+    private bool isDead = false;
+    public XPBar xpBar;
     public static Player Instance { get; private set; }
 
     public float PlayerSpeed => playerSpeed;
@@ -46,4 +46,11 @@ public class Player : MonoBehaviour
         isDead = true;
         // 可以在这里禁止移动等操作
     }
+
+    public void AddExp(int amount)
+    {
+        if (xpBar != null)
+            xpBar.AddXP(amount);
+    }
+
 }

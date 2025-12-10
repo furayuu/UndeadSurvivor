@@ -197,8 +197,8 @@ MonoBehaviour:
   itemA: {fileID: 5650115378422035699, guid: 4ccf77dd606f651469aa912e8e28afb4, type: 3}
   itemB: {fileID: 626115346216079600, guid: f962f4df1d24dc44f8af777596fa8c28, type: 3}
   itemC: {fileID: 8056945113776425736, guid: 2b8bb3e19dcf5b34bbb5484508bd3d71, type: 3}
-  itemAChance: 0.2
-  itemBChance: 0.1
+  itemAChance: 0.5
+  itemBChance: 0.19999999
   itemCChance: 0.05
   moveSpeed: 2
   wanderRadius: 3
