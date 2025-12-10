@@ -1,0 +1,11 @@
+diff a/Assets/Scenes/MainScene.unity b/Assets/Scenes/MainScene.unity	(rejected hunks)
+@@ -11541,6 +11542,9 @@
+   scythePrefab: {fileID: 663362190569744137, guid: 4ec30225a2f848844bc974e9bf147520, type: 3}
+   weaponHolder: {fileID: 594898292}
+ --- !u!1 &773261581
++=======
++--- !u!1 &681012392
++>>>>>>> 385a0e1145fb763dbb880bd81b6eb4852c130504
+ GameObject:
+   m_ObjectHideFlags: 0
+   m_CorrespondingSourceObject: {fileID: 0}
