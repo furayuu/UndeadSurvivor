@@ -24,10 +24,13 @@ public class HPBar : MonoBehaviour
         {
             currentHP = 0; // HPが0未満にならないようにする
 
+            //プレイヤーを探して
             GameObject obj = GameObject.Find("Player");
 
+            //プレイヤーをデリート
             Destroy(obj);
 
+            //ゲームオーバーシーンへの遷移
             SceneManager.LoadScene("GameOverScene");
         }
         UpdateBar();
