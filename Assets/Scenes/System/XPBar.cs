@@ -29,21 +29,24 @@ public class XPBar : MonoBehaviour
 
             UpdateBar(); // バーの表示を更新
         }
-
+    }
         // 経験値バーの表示を更新する関数
-        void UpdateBar()
+     void UpdateBar()
+     {
+        float fill = (float)currentXP / maxXP; // 割合を計算（0〜1）
+        fillImage.fillAmount = fill; // Image の塗り量を変更
+     }
+ 
+    
+    // テスト用：スペースキーを押すと経験値を追加
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            float fill = (float)currentXP / maxXP; // 割合を計算（0〜1）
-            fillImage.fillAmount = fill; // Image の塗り量を変更
-        }
 
-        // テスト用：スペースキーを押すと経験値を追加
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                AddXP(10); // 10ポイント追加
-            }
+            AddXP(10); // 10ポイント追加
+            Debug.Log("経験値を追加しました");
+            
         }
     }
 }
