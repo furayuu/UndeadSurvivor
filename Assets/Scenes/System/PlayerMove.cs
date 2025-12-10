@@ -15,7 +15,6 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        // 入力の取得と正規化
         moveInput = new Vector2(
             Input.GetAxisRaw("Horizontal"),
             Input.GetAxisRaw("Vertical")
@@ -24,7 +23,6 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // 物理演算による移動
         rb2d.velocity = moveInput * moveSpeed;
     }
 

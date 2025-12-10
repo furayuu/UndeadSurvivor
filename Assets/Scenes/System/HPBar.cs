@@ -1,55 +1,40 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HPBar : MonoBehaviour
 {
-    public Image fillImage;     // HPãƒãƒ¼ã®å¡—ã‚Šéƒ¨åˆ†
-    public int maxHP = 100;     // æœ€å¤§HP
-    public int currentHP;       // ç¾åœ¨ã®HP
+    public Image fillImage;     // HPƒo[‚Ì“h‚è•”•ª
+    public int maxHP = 100;     // Å‘åHP
+    public int currentHP;       // Œ»İ‚ÌHP
 
     void Start()
     {
-        currentHP = maxHP;     // åˆæœŸHPã‚’æœ€å¤§å€¤ã«è¨­å®š
+        currentHP = maxHP;     // ‰ŠúHP‚ğÅ‘å’l‚Éİ’è
         UpdateBar();
     }
 
-    // ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’å—ã‘ã‚‹é–¢æ•°ï¼ˆæ•µã®æ”»æ’ƒã‚„è¡çªãƒ€ãƒ¡ãƒ¼ã‚¸ç”¨ï¼‰
+    // ƒ_ƒ[ƒW‚ğó‚¯‚éŠÖ”i“G‚ÌUŒ‚‚âÕ“Ëƒ_ƒ[ƒW—pj
     public void TakeDamage(int amount)
     {
         currentHP -= amount;
-        Debug.Log(currentHP);
+
         if (currentHP < 0)
-        {
-            // HPãŒ0æœªæº€ã«ãªã‚‰ãªã„ã‚ˆã†ã«ã™ã‚‹
-            currentHP = 0;
-
-            //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’å‰Šé™¤ã™ã‚‹ãŸã‚ã«æ¤œç´¢
-            GameObject obj = GameObject.Find("Player");
-
-            //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å‰Šé™¤
-            Destroy(obj);
-
-            //ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ç”»é¢ã‚’å®Ÿè£…ã™ã‚‹
-            SceneManager.LoadScene("GameOverScene");
-        }
-            
+            currentHP = 0;     // HP‚ª0–¢–‚É‚È‚ç‚È‚¢‚æ‚¤‚É‚·‚é
 
         UpdateBar();
     }
 
-    // å›å¾©ã™ã‚‹é–¢æ•°ï¼ˆå›å¾©ã‚¢ã‚¤ãƒ†ãƒ ã€å¸è¡€åŠ¹æœãªã©ï¼‰
+    // ‰ñ•œ‚·‚éŠÖ”i‰ñ•œƒAƒCƒeƒ€A‹zŒŒŒø‰Ê‚È‚Çj
     public void Heal(int amount)
     {
         currentHP += amount;
 
         if (currentHP > maxHP)
-            currentHP = maxHP; // æœ€å¤§HPã‚’è¶…ãˆãªã„ã‚ˆã†ã«ã™ã‚‹
+            currentHP = maxHP; // Å‘åHP‚ğ’´‚¦‚È‚¢‚æ‚¤‚É‚·‚é
 
         UpdateBar();
     }
 
-    //ãƒ¬ãƒ™ãƒ«ã‚¢ãƒƒãƒ—ã—ãŸã¨ãã«å…¨å›å¾©ã™ã‚‹é–¢æ•°
     public void MaxHeal()
     {
         currentHP = maxHP;
@@ -58,7 +43,7 @@ public class HPBar : MonoBehaviour
     }
 
 
-    // HPãƒãƒ¼ã®è¡¨ç¤ºã‚’æ›´æ–°
+    // HPƒo[‚Ì•\¦‚ğXV
     void UpdateBar()
     {
         fillImage.fillAmount = (float)currentHP / maxHP;
@@ -66,16 +51,18 @@ public class HPBar : MonoBehaviour
 
     void Update()
     {
-        // å·¦ã‚­ãƒ¼ï¼š5ãƒ€ãƒ¡ãƒ¼ã‚¸
+        // ¶ƒL[F5ƒ_ƒ[ƒW
         if (Input.GetKeyDown(KeyCode.Q))
         {
             TakeDamage(5);
         }
 
-        // å³ã‚­ãƒ¼ï¼š5å›å¾©
+        // ‰EƒL[F5‰ñ•œ
         if (Input.GetKeyDown(KeyCode.E))
         {
             Heal(5);
         }
     }
 }
+
+

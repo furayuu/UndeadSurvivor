@@ -8,7 +8,7 @@ public abstract class WeaponBase : MonoBehaviour
     protected Transform owner;
     protected float nextAttackTime;
 
-    protected virtual void Start() { }
+    protected virtual void Start() { } 
 
     public virtual void Initialize(Transform ownerTransform, WeaponData data = null)
     {
@@ -18,7 +18,6 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        // 攻撃間隔の管理
         if (Time.time >= nextAttackTime)
         {
             TryAttack();

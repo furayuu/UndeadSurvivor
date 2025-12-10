@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class ShovelWeapon : MeleeWeaponBase
 {
+    private Vector3 startLocalPos;
+    private Quaternion startLocalRot;
     private HashSet<EnemyBase> hitEnemies = new HashSet<EnemyBase>();
+    private SpriteRenderer playerSprite;
 
     protected override void Start()
     {
         base.Start();
-        // 基本クラスで初期化と向き更新を処理
+
+        if (pivot == null)
+            pivot = owner != null ? owner : transform.parent;
+
+        transform.parent = pivot;
+        startLocalPos = transform.localPosition;
+        startLocalRot = transform.localRotation;
+
+        playerSprite = Player.Instance.SpriteRenderer;
     }
 
     protected override void TryAttack()
@@ -28,14 +39,14 @@ public class ShovelWeapon : MeleeWeaponBase
         float swingDuration = Mathf.Max(0.01f, weaponData.swingDuration);
         float damage = weaponData.damage;
 
-        // 基本クラスの facingRight を使用して方向を決定
+        // 检测玩家面向方向
+        bool facingRight = !playerSprite.flipX;
         float startAngle = facingRight ? 45f : 135f;
-        float endAngle = facingRight ? -45f : 225f;
+        float endAngle = facingRight ? -45f : 225f; // 左边旋转角度更大
+        float angleDir = facingRight ? 1f : -1f;    // 控制弧线方向
 
-        Vector3 startPos = transform.localPosition; // 現在のローカル位置を使用
+        Vector3 startPos = startLocalPos;
         Vector3 targetPos = AngleToLocalPosition(startAngle, radius);
-
-        // 開始位置へ素早く移動
         float t = 0f;
         while (t < 0.15f)
         {
@@ -44,8 +55,7 @@ public class ShovelWeapon : MeleeWeaponBase
             transform.localRotation = Quaternion.Euler(0f, 0f, startAngle);
             yield return null;
         }
-
-        // 振り動作を実行
+        
         float elapsed = 0f;
         while (elapsed < swingDuration)
         {
@@ -60,18 +70,16 @@ public class ShovelWeapon : MeleeWeaponBase
             yield return null;
         }
 
-        // 初期位置に戻る
-        while (Vector3.Distance(transform.localPosition, startPos) > 0.05f)
+        
+        while (Vector3.Distance(transform.localPosition, startLocalPos) > 0.05f)
         {
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, startPos, extendSpeed * Time.deltaTime);
-            transform.localRotation = Quaternion.Lerp(transform.localRotation,
-                facingRight ? startLocalRot : Quaternion.Euler(0f, 0f, 180f), // 左向きの場合は反転状態を保持
-                extendSpeed * Time.deltaTime);
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, startLocalPos, extendSpeed * Time.deltaTime);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, startLocalRot, extendSpeed * Time.deltaTime);
             yield return null;
         }
 
-        transform.localPosition = startPos;
-        transform.localRotation = facingRight ? startLocalRot : Quaternion.Euler(0f, 0f, 180f);
+        transform.localPosition = startLocalPos;
+        transform.localRotation = startLocalRot;
         isAttacking = false;
     }
 
@@ -95,5 +103,22 @@ public class ShovelWeapon : MeleeWeaponBase
                 hitEnemies.Add(enemy);
             }
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (pivot == null) return;
+
+        Gizmos.color = Color.green;
+        float radius = weaponData != null ? weaponData.extendDistance : 1f;
+        Vector3 rightUp = pivot.TransformPoint(AngleToLocalPosition(45, radius));
+        Vector3 rightDown = pivot.TransformPoint(AngleToLocalPosition(-45, radius));
+        Vector3 leftUp = pivot.TransformPoint(AngleToLocalPosition(135, radius));
+        Vector3 leftDown = pivot.TransformPoint(AngleToLocalPosition(225, radius));
+
+        Gizmos.DrawLine(pivot.position, rightUp);
+        Gizmos.DrawLine(pivot.position, rightDown);
+        Gizmos.DrawLine(pivot.position, leftUp);
+        Gizmos.DrawLine(pivot.position, leftDown);
     }
 }
