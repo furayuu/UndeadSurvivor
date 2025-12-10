@@ -27,10 +27,12 @@ public class XPBar : MonoBehaviour
             Debug.Log("レベルアップ！");
             //最大HP増加
             hpbar.maxHP += 10;
+            Debug.Log(hpbar.maxHP);
             //現在HPがMAXHPよりも低ければ全回復
             if (hpbar.currentHP < hpbar.maxHP)
-            {
+            { 
                 hpbar.MaxHeal();
+                Debug.Log("HP回復！");
             } 
         }
         UpdateBar(); // バーの表示を更新
