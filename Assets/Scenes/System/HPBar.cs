@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HPBar : MonoBehaviour
@@ -6,6 +7,7 @@ public class HPBar : MonoBehaviour
     public Image fillImage;     // HPバーの塗り部分
     public int maxHP = 100;     // 最大HP
     public int currentHP;       // 現在のHP
+   
 
     void Start()
     {
@@ -19,8 +21,18 @@ public class HPBar : MonoBehaviour
         currentHP -= amount;
 
         if (currentHP < 0)
-            currentHP = 0;     // HPが0未満にならないようにする
+        {
+            currentHP = 0; // HPが0未満にならないようにする
 
+            //プレイヤーを探して
+            GameObject obj = GameObject.Find("Player");
+
+            //プレイヤーをデリート
+            Destroy(obj);
+
+            //ゲームオーバーシーンへの遷移
+            SceneManager.LoadScene("GameOverScene");
+        }
         UpdateBar();
     }
 

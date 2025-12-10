@@ -56,5 +56,6 @@ public class XPBar : MonoBehaviour
             Debug.Log("経験値を追加しました");
 
         }*/
+       
     }
 }
