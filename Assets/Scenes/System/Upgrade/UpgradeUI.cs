@@ -1,49 +1,44 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UpgradeUI : MonoBehaviour
 {
     public static UpgradeUI Instance;
 
     public GameObject panel;
-    public Button[] optionButtons; // 三个按钮
-    private System.Action<UpgradeOption> onSelectedCallback;
+    public UpgradeButton[] buttons;
 
     private UpgradeOption[] currentOptions;
+    private System.Action<UpgradeOption> onSelected;
 
-    private void Awake()
+    void Awake()
     {
         Instance = this;
         panel.SetActive(false);
     }
 
-    public void ShowOptions(UpgradeOption[] options, System.Action<UpgradeOption> onSelected)
+    public void ShowOptions(UpgradeOption[] options, System.Action<UpgradeOption> callback)
     {
         GamePause.Pause();
 
         currentOptions = options;
-        onSelectedCallback = onSelected;
+        onSelected = callback;
 
         panel.SetActive(true);
 
-        for (int i = 0; i < optionButtons.Length; i++)
+        for (int i = 0; i < buttons.Length; i++)
         {
             int index = i;
-            optionButtons[i].GetComponentInChildren<Text>().text = options[i].title;
-
-            optionButtons[i].onClick.RemoveAllListeners();
-            optionButtons[i].onClick.AddListener(() =>
+            buttons[i].SetOption(options[i], option =>
             {
-                SelectOption(index);
+                Select(option);
             });
         }
     }
 
-    void SelectOption(int index)
+    void Select(UpgradeOption option)
     {
-        onSelectedCallback?.Invoke(currentOptions[index]);
+        onSelected?.Invoke(option);
         panel.SetActive(false);
         GamePause.Resume();
     }
 }
-

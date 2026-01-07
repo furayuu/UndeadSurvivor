@@ -1,20 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GamePause : MonoBehaviour
+public static class GamePause
 {
-    public static bool IsPaused = false;
+    public static bool IsPaused { get; private set; }
 
     public static void Pause()
     {
-        Time.timeScale = 0f;
+        if (IsPaused) return;
         IsPaused = true;
+        Time.timeScale = 0f;
     }
 
     public static void Resume()
     {
-        Time.timeScale = 1f;
+        if (!IsPaused) return;
         IsPaused = false;
+        Time.timeScale = 1f;
     }
 }
