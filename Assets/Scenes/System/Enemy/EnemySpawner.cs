@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [Header("Spawn Settings")]
+    public static int AliveEnemyCount;
+
     public GameObject[] enemyPrefabs;
     public float baseSpawnInterval = 2f;
     public int baseMaxEnemies = 30;
@@ -33,9 +34,7 @@ public class EnemySpawner : MonoBehaviour
     void TrySpawnEnemy()
     {
         if (player == null) return;
-
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length >= GetMaxEnemies())
-            return;
+        if (AliveEnemyCount >= GetMaxEnemies()) return;
 
         Vector2 spawnPos =
             (Vector2)player.position +
@@ -44,12 +43,7 @@ public class EnemySpawner : MonoBehaviour
         GameObject prefab =
             enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
 
-        GameObject enemy =
-            Instantiate(prefab, spawnPos, Quaternion.identity);
-
-        var follower = enemy.GetComponent<EnemyFollow>();
-        if (follower != null)
-            follower.player = player;
+        Instantiate(prefab, spawnPos, Quaternion.identity);
     }
 
     float GetSpawnInterval()
@@ -69,5 +63,12 @@ public class EnemySpawner : MonoBehaviour
             return Mathf.RoundToInt(baseMaxEnemies * 1.3f);
 
         return baseMaxEnemies;
+    }
+
+    public static void ClearAllEnemies()
+    {
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var e in enemies)
+            Destroy(e);
     }
 }

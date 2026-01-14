@@ -7,38 +7,32 @@ public class UpgradeUI : MonoBehaviour
     public GameObject panel;
     public UpgradeButton[] buttons;
 
-    private UpgradeOption[] currentOptions;
-    private System.Action<UpgradeOption> onSelected;
-
-    void Awake()
+    private void Awake()
     {
         Instance = this;
         panel.SetActive(false);
     }
 
-    public void ShowOptions(UpgradeOption[] options, System.Action<UpgradeOption> callback)
+    public void Show()
     {
         GamePause.Pause();
-
-        currentOptions = options;
-        onSelected = callback;
-
         panel.SetActive(true);
+
+        var options = UpgradeManager.Instance.GetRandomUpgrades();
 
         for (int i = 0; i < buttons.Length; i++)
         {
-            int index = i;
-            buttons[i].SetOption(options[i], option =>
-            {
-                Select(option);
-            });
+            buttons[i].Set(options[i], this);
         }
     }
 
-    void Select(UpgradeOption option)
+    public void Select(UpgradeOption option)
     {
-        onSelected?.Invoke(option);
+        option.Apply();
+
         panel.SetActive(false);
         GamePause.Resume();
+
+        WaveManager.Instance.StartNextWave();
     }
 }

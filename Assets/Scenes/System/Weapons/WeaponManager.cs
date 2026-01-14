@@ -30,7 +30,7 @@ public class WeaponManager : MonoBehaviour
         currentWeapon = Instantiate(GetWeaponPrefab(weaponName), weaponHolder);
         Debug.Log("装备主武器: " + weaponName);
 
-        WaveManager.Instance.StartFirstWaveFromUI();
+        WaveManager.Instance.StartFirstWave();
     }
 
     // ============= 第二武器 =============

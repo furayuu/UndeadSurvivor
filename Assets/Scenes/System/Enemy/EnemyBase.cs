@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     [Header("Base Stats")]
-    public float maxHealth = 50f;
+    public float maxHealth = 30f;
     protected float currentHealth;
 
     protected Animator animator;

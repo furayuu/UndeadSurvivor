@@ -5,16 +5,11 @@ public class WaveManager : MonoBehaviour
 {
     public static WaveManager Instance;
 
-    [Header("Wave Settings")]
     public int currentWave = 1;
     public int totalWaves = 9;
 
     private float timer;
-    private bool isCombatPhase = false;
-    private bool waitingForNextWave = false;
-
-    public event Action<int> OnWaveStart;
-    public event Action<int> OnWaveEnd;
+    private bool isCombatPhase;
 
     public float RemainingTime => Mathf.Max(timer, 0f);
 
@@ -26,17 +21,9 @@ public class WaveManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    void Start()
-    {
-        // 开局暂停，先选武器
-        GamePause.Pause();
-        ShowStartWeaponSelection();
-    }
-
     void Update()
     {
-        if (!isCombatPhase || waitingForNextWave)
-            return;
+        if (!isCombatPhase) return;
 
         timer -= Time.deltaTime;
         if (timer <= 0f)
@@ -45,45 +32,28 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    #region Wave Flow
+    public void StartFirstWave()
+    {
+        StartWave();
+    }
 
     void StartWave()
     {
-        waitingForNextWave = false;
         isCombatPhase = true;
-
         timer = GetWaveDuration();
         GamePause.Resume();
 
         Debug.Log($"Wave {currentWave} Start");
-        OnWaveStart?.Invoke(currentWave);
     }
-
-    public void StartFirstWaveFromUI()
-    {
-        if (isCombatPhase) return;
-
-        StartWave();
-    }
-
 
     void EndWave()
     {
         isCombatPhase = false;
-        waitingForNextWave = true;
-
+        EnemySpawner.ClearAllEnemies();
         Debug.Log($"Wave {currentWave} End");
-        OnWaveEnd?.Invoke(currentWave);
 
-        // Wave 结束 → 打开升级界面
-        UpgradeUI.Instance.ShowOptions(
-            UpgradeManager.Instance.GetRandomOptions(),
-            option =>
-            {
-                option.applyEffect?.Invoke();
-                // 升级完成，但仍然暂停
-            }
-        );
+        // 波次结束 → 打开升级界面
+        UpgradeUI.Instance.Show();
     }
 
     public void StartNextWave()
@@ -98,24 +68,6 @@ public class WaveManager : MonoBehaviour
         StartWave();
     }
 
-    #endregion
-
-    #region Start Weapon Selection
-
-    void ShowStartWeaponSelection()
-    {
-        UpgradeUI.Instance.ShowOptions(
-            UpgradeManager.Instance.GetStartWeaponOptions(),
-            option =>
-            {
-                option.applyEffect?.Invoke();
-                StartWave(); // 选完武器，正式开始第一关
-            }
-        );
-    }
-
-    #endregion
-
     float GetWaveDuration()
     {
         if (currentWave <= 3) return 45f;
@@ -128,9 +80,9 @@ public class WaveManager : MonoBehaviour
         Debug.Log("Game Clear!");
         GamePause.Pause();
     }
-
     public bool IsCombatPhase()
     {
         return isCombatPhase;
     }
+
 }

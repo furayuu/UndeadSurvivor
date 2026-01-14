@@ -8,13 +8,13 @@ public class UpgradeButton : MonoBehaviour
     public TMP_Text title;
     public TMP_Text description;
 
-    private UpgradeOption currentOption;
-    private System.Action<UpgradeOption> onClick;
+    private UpgradeOption option;
+    private UpgradeUI owner;
 
-    public void SetOption(UpgradeOption option, System.Action<UpgradeOption> callback)
+    public void Set(UpgradeOption option, UpgradeUI owner)
     {
-        currentOption = option;
-        onClick = callback;
+        this.option = option;
+        this.owner = owner;
 
         icon.sprite = option.icon;
         title.text = option.upgradeName;
@@ -23,6 +23,6 @@ public class UpgradeButton : MonoBehaviour
 
     public void Click()
     {
-        onClick?.Invoke(currentOption);
+        owner.Select(option);
     }
 }
