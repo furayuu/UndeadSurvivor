@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Linq;
+using System.Collections.Generic;
 
 public class UpgradeManager : MonoBehaviour
 {
@@ -15,11 +15,20 @@ public class UpgradeManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public UpgradeOption[] GetRandomUpgrades(int count = 3)
+    public List<UpgradeOption> GetRandomUpgrades(int count = 3)
     {
-        return allUpgrades
-            .OrderBy(x => Random.value)
-            .Take(count)
-            .ToArray();
+        List<UpgradeOption> pool = new List<UpgradeOption>(allUpgrades);
+        List<UpgradeOption> result = new List<UpgradeOption>();
+
+        count = Mathf.Min(count, pool.Count);
+
+        for (int i = 0; i < count; i++)
+        {
+            int index = Random.Range(0, pool.Count);
+            result.Add(pool[index]);
+            pool.RemoveAt(index); 
+        }
+
+        return result;
     }
 }

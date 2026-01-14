@@ -23,6 +23,13 @@ public class UpgradeButton : MonoBehaviour
 
     public void Click()
     {
+        if (option == null || owner == null)
+        {
+            Debug.LogError("UpgradeButton Clicked but not initialized!");
+            return;
+        }
+
         owner.Select(option);
     }
+
 }

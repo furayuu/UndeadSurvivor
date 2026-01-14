@@ -57,4 +57,30 @@ public class WeaponManager : MonoBehaviour
         Debug.LogError("没有这个武器名：" + weaponName);
         return null;
     }
+
+    public void IncreaseAttack(float value)
+    {
+        ApplyToAllWeapons(w => w.AddDamageMultiplier(value));
+    }
+
+    public void IncreaseAttackSpeed(float value)
+    {
+        ApplyToAllWeapons(w => w.AddAttackSpeedMultiplier(value));
+    }
+
+    private void ApplyToAllWeapons(System.Action<WeaponBase> action)
+    {
+        if (currentWeapon != null)
+        {
+            var weapon = currentWeapon.GetComponent<WeaponBase>();
+            if (weapon != null) action(weapon);
+        }
+
+        if (secondWeapon != null)
+        {
+            var weapon = secondWeapon.GetComponent<WeaponBase>();
+            if (weapon != null) action(weapon);
+        }
+    }
+
 }

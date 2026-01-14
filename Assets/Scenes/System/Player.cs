@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 
     private bool isDead = false;
     public XPBar xpBar;
+    public HPBar hpBar;
+
     public static Player Instance { get; private set; }
 
     public float PlayerSpeed => playerSpeed;
@@ -40,11 +42,9 @@ public class Player : MonoBehaviour
         playerSprite.UpdateAnimation(animator, inputDir, isDead);
     }
 
-    // 示例：玩家死亡方法
     public void Die()
     {
         isDead = true;
-        // 可以在这里禁止移动等操作
     }
 
     public void AddExp(int amount)
@@ -52,5 +52,23 @@ public class Player : MonoBehaviour
         if (xpBar != null)
             xpBar.AddXP(amount);
     }
+    public void Heal(int amount)
+    {
+        if (hpBar != null)
+            hpBar.Heal(amount);
+    }
 
+    public void IncreaseMaxHealth(int amount)
+    {
+        if (hpBar != null)
+            hpBar.IncreaseMaxHP(amount);
+    }
+
+    public void IncreaseSpeed(float amount)
+    {
+        playerSpeed += amount;
+
+        if (playerMove != null)
+            playerMove.SetSpeed(playerSpeed);
+    }
 }

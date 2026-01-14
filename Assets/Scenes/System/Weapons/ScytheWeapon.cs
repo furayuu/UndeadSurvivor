@@ -28,7 +28,7 @@ public class ScytheWeapon : MeleeWeaponBase
         if (rotating != null)
         {
             rotating.Initialize(
-                weaponData.damage,
+                GetFinalDamage(),
                 weaponData.rotationSpeed,
                 weaponData.spinDuration,
                 weaponData.damageInterval

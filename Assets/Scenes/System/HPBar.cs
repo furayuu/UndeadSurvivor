@@ -54,27 +54,29 @@ public class HPBar : MonoBehaviour
         UpdateBar();
     }
 
-
     // HPバーの表示を更新
     void UpdateBar()
     {
         fillImage.fillAmount = (float)currentHP / maxHP;
     }
-
-    void Update()
+    public void IncreaseMaxHP(int amount, bool healToFull = false)
     {
-        // 左キー：5ダメージ
-        if (Input.GetKeyDown(KeyCode.Q))
+        maxHP += amount;
+
+        if (healToFull)
         {
-            TakeDamage(5);
+            currentHP = maxHP;
+        }
+        else
+        {
+            currentHP += amount; 
+            if (currentHP > maxHP)
+                currentHP = maxHP;
         }
 
-        // 右キー：5回復
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Heal(5);
-        }
+        UpdateBar();
     }
+
 }
 
 

@@ -8,7 +8,18 @@ public abstract class WeaponBase : MonoBehaviour
     protected Transform owner;
     protected float nextAttackTime;
 
-    protected virtual void Start() { } 
+    protected float damageMultiplier = 1f;
+    protected float attackSpeedMultiplier = 1f;
+    protected virtual void Start() { }
+    public void AddDamageMultiplier(float value)
+    {
+        damageMultiplier += value;
+    }
+
+    public void AddAttackSpeedMultiplier(float value)
+    {
+        attackSpeedMultiplier += value;
+    }
 
     public virtual void Initialize(Transform ownerTransform, WeaponData data = null)
     {
@@ -21,8 +32,15 @@ public abstract class WeaponBase : MonoBehaviour
         if (Time.time >= nextAttackTime)
         {
             TryAttack();
-            nextAttackTime = Time.time + 1f / weaponData.attackRate;
+            nextAttackTime =
+                Time.time + 1f / (weaponData.attackRate * attackSpeedMultiplier);
         }
+    }
+
+
+    protected float GetFinalDamage()
+    {
+        return weaponData.damage * damageMultiplier;
     }
 
     protected abstract void TryAttack();

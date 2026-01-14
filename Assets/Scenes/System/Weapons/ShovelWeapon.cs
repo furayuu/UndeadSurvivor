@@ -99,7 +99,7 @@ public class ShovelWeapon : MeleeWeaponBase
             EnemyBase enemy = hit.GetComponent<EnemyBase>();
             if (enemy != null && !hitEnemies.Contains(enemy))
             {
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(GetFinalDamage());
                 hitEnemies.Add(enemy);
             }
         }

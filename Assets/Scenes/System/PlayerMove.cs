@@ -25,6 +25,10 @@ public class PlayerMove : MonoBehaviour
     {
         rb2d.velocity = moveInput * moveSpeed;
     }
+    public void SetSpeed(float newSpeed)
+    {
+        moveSpeed = newSpeed;
+    }
 
     public Vector2 Move()
     {

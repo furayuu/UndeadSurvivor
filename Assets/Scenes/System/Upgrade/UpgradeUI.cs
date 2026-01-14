@@ -10,7 +10,9 @@ public class UpgradeUI : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        panel.SetActive(false);
+
+        if (panel != null)
+            panel.SetActive(false);
     }
 
     public void Show()
@@ -22,7 +24,15 @@ public class UpgradeUI : MonoBehaviour
 
         for (int i = 0; i < buttons.Length; i++)
         {
-            buttons[i].Set(options[i], this);
+            if (i < options.Count)
+            {
+                buttons[i].gameObject.SetActive(true);
+                buttons[i].Set(options[i], this);
+            }
+            else
+            {
+                buttons[i].gameObject.SetActive(false);
+            }
         }
     }
 
