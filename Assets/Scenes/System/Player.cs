@@ -3,7 +3,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float playerSpeed = 5f;
+    [SerializeField] public float playerSpeed = 4f;
 
     [Header("Components")]
     [SerializeField] private PlayerMove playerMove;
@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
 
         playerSprite.UpdateFacing(spriteRenderer, inputDir);
         playerSprite.UpdateAnimation(animator, inputDir, isDead);
+
     }
 
     public void Die()
