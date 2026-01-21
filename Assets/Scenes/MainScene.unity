@@ -13321,7 +13321,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1289912022}
   animator: {fileID: 1289912024}
   xpBar: {fileID: 1849684767}
-  hpBar: {fileID: 0}
+  hpBar: {fileID: 439056392}
 --- !u!114 &1289912029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13850,6 +13850,8 @@ MonoBehaviour:
   fillImage: {fileID: 33242712}
   currentXP: 0
   maxXP: 20
+  hpbar: {fileID: 439056392}
+  player: {fileID: 1289912028}
 --- !u!114 &1849684768
 MonoBehaviour:
   m_ObjectHideFlags: 0
