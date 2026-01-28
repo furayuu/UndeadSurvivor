@@ -4,7 +4,7 @@ using System;
 public class WaveManager : MonoBehaviour
 {
     public static WaveManager Instance;
-
+    public event Action<int> OnWaveStart;
     public int currentWave = 1;
     public int totalWaves = 9;
 
@@ -42,7 +42,7 @@ public class WaveManager : MonoBehaviour
         isCombatPhase = true;
         timer = GetWaveDuration();
         GamePause.Resume();
-
+        OnWaveStart?.Invoke(currentWave);
         Debug.Log($"Wave {currentWave} Start");
     }
 

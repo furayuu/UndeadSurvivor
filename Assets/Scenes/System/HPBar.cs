@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class HPBar : MonoBehaviour
 {
     public Image fillImage;     // HPバーの塗り部分
     public int maxHP = 100;     // 最大HP
     public int currentHP;       // 現在のHP
-   
+    public TMP_Text hpText;
+
 
     void Start()
     {
@@ -58,7 +61,11 @@ public class HPBar : MonoBehaviour
     void UpdateBar()
     {
         fillImage.fillAmount = (float)currentHP / maxHP;
+
+        if (hpText != null)
+            hpText.text = $"{currentHP} / {maxHP}";
     }
+
     public void IncreaseMaxHP(int amount, bool healToFull = false)
     {
         maxHP += amount;

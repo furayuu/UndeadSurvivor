@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class XPBar : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class XPBar : MonoBehaviour
     public int maxXP = 100;
     public HPBar hpbar;
     public Player player;
+    public TMP_Text xpText;
 
     private void Start()
     {
@@ -42,8 +45,13 @@ public class XPBar : MonoBehaviour
 
     void UpdateBar()
     {
-        fillImage.fillAmount = (float)currentXP / maxXP;
+        float fill = (float)currentXP / maxXP;
+        fillImage.fillAmount = fill;
+
+        if (xpText != null)
+            xpText.text = $"{currentXP} / {maxXP}";
     }
+
 
     private void Update()
     {

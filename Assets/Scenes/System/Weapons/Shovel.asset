@@ -16,7 +16,7 @@ MonoBehaviour:
   weaponType: 0
   attackMode: 1
   description: 
-  damage: 10
+  damage: 25
   attackRate: 0.5
   range: 3
   bulletSpeed: 15

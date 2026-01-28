@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class EnemyShoot : MonoBehaviour
 {
-    public GameObject bulletPrefab;   // Bullet のPrefab
-    public Transform firePoint;        // 発射位置
-    public float shootInterval = 1.5f; // 発射間隔（秒）
+    public GameObject bulletPrefab;   
+    public Transform firePoint;       
+    public float shootInterval = 1.5f; 
 
     private Transform player;
     private float timer;
 
     void Start()
     {
-        // Player タグを持つオブジェクトを取得
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
