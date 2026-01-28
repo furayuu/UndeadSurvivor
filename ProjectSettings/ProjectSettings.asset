@@ -704,11 +704,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: cd1fa7ff-f2f5-41f0-afac-67db772e5340
+  cloudProjectId: b007277f-7cbe-467a-806a-8ba570841e0a
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: Undead Survivor
-  organizationId: hanzichun0116
+  organizationId: furayuu
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
