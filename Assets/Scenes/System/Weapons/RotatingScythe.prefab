@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2556920968543404930}
   - component: {fileID: 347088226069533198}
   - component: {fileID: -1928380440217621829}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RotatingScythe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
