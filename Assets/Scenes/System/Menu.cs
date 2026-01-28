@@ -11,6 +11,11 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void RePlay()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quit Game");
